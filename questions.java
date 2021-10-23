@@ -78,3 +78,40 @@ public boolean isSymmetric_(TreeNode root1,TreeNode root2){
 
 
 
+
+// level order traversal of tree
+
+public void solve(TreeNode root,  List<List<Integer>>  ans)
+    {
+        if(root == null) return;
+        
+        
+        LinkedList<TreeNode> que  = new LinkedList<>();
+        
+        que.addLast(root);
+        
+        while(que.size()!=0){
+            int size =que.size();
+            ArrayList<Integer> res = new ArrayList<>();
+            while(size-->0){
+                TreeNode vtx = que.removeFirst();
+                
+                res.add(vtx.val);
+                
+                if(vtx.left!=null) que.addLast(vtx.left);
+                 if(vtx.right!=null) que.addLast(vtx.right);
+            }
+            
+            ans.add(res);
+        }
+    }
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        
+        List<List<Integer>>  ans = new ArrayList<>();
+        solve(root,ans);
+        
+        
+        return ans;
+        
+    }
+
