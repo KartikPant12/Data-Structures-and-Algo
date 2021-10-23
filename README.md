@@ -1,5 +1,4 @@
-# hacktober2021
-
+#DSA
 
 Add the dsa problems here!
 
