@@ -152,3 +152,29 @@ public:
         }
     }
 };
+
+//  C++ || DFS || BFS || DFS IS BETTER IN BOTH T.C AND S.C
+class Solution {
+public:
+    //DFS 
+   /* int ans=0;
+    void solve(int h, TreeNode* root, int cur_depth){
+        if(root==NULL) return;
+        if(cur_depth==h && root->left==NULL && root->right==NULL) ans+=root->val;
+        solve(h,root->left,cur_depth+1);
+        solve(h,root->right,cur_depth+1);
+     }
+    
+    
+    int depth(TreeNode* root){
+        if(root==NULL) return 0;
+         int ld=depth(root->left);
+          int rd=depth(root->right);
+          return 1+max(ld,rd);
+    }
+    
+    int deepestLeavesSum(TreeNode* root) {
+       int max_depth= depth(root);
+        solve(max_depth,root,1);
+        return ans;
+    }
