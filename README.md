@@ -51,6 +51,25 @@ public int catalan(int n , int [] dp)
 
 
 
+//check if bst is valid
 
+class Solution {
+public:
+    long btsval = -1e14;
+    
+    bool isValidBST(TreeNode* root) {
+     
+        
+        if(root == nullptr) return true;
+        
+        if(!isValidBST(root->left))  return false;
+        
+        if(btsval>=root->val) return false;
+        btsval = root->val;
+        if(!isValidBST(root->right)) return false;
+        
+        return true;
+    }
+};
 
 
