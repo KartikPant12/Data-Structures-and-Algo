@@ -359,3 +359,27 @@ lca of a bst
         }
         return null;
     }
+    
+Invert a binary tree
+
+    public TreeNode find(TreeNode root){
+        if(root == null) return null;
+        
+        TreeNode lres = find(root.left);
+        TreeNode rres = find(root.right);
+        
+        
+        
+        root.left = rres;
+        root.right = lres;
+        
+        return root;
+        
+        
+    }
+    public TreeNode invertTree(TreeNode root) {
+        
+        if(root == null) return root;
+        return find(root);
+        
+    }
