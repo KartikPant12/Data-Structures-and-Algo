@@ -148,3 +148,48 @@ public void rightview(TreeNode root,ArrayList<Integer> ans)
         return ans;
         
     }
+
+  post order traversal
+  
+   public class pair{
+        TreeNode node = null;
+        boolean leftdone = false;
+        boolean rightdone = false;
+        boolean selfdone = false;
+        
+        pair(TreeNode node ,  boolean selfdone, boolean leftdone , boolean rightdone){
+            this.node = node;
+            this.selfdone = selfdone;
+            this.leftdone = leftdone;
+            this.rightdone = rightdone;
+        }
+    }
+    
+    
+    
+    public List<Integer> postorderTraversal(TreeNode root) {
+     if(root == null) return new ArrayList<>();
+        ArrayList<Integer> ans = new ArrayList<>();
+        
+        Stack<pair> st = new Stack<>();
+        st.push(new pair(root,false,false,false));
+        while(st.size()!=0){
+            pair rp = st.peek();
+            
+            if(!rp.leftdone){
+                rp.leftdone = true;
+                if(rp.node.left!=null) st.push(new pair(rp.node.left,false,false,false));
+            }else if(!rp.rightdone){
+                rp.rightdone = true;
+                if(rp.node.right!=null) st.push(new pair(rp.node.right,false,false,false));
+            }else if(!rp.selfdone){
+                rp.selfdone = true;
+                ans.add(rp.node.val);
+            }else{
+                st.pop();
+            }
+        }
+        return ans;
+    }
+
+
