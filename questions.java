@@ -309,3 +309,38 @@ kth smallest element in bst
         
         return st.pop().val;
     }
+
+
+
+
+bst iterator
+
+ Stack<TreeNode> st;
+    public BSTIterator(TreeNode root) {
+        st = new Stack<>();
+        TreeNode curr = root;
+        while(curr!=null){
+            st.add(curr);
+            curr= curr.left;
+        }
+    }
+    
+    
+    public void addallLeft(TreeNode root){
+        while(root!=null){
+          st.add(root);
+            root = root.left;
+        }
+    }
+    public int next() {
+        TreeNode remNode = st.pop();
+        addallLeft(remNode.right);
+        
+        return remNode.val;
+        
+        
+    }
+    
+    public boolean hasNext() {
+        return st.size() != 0;
+    }
