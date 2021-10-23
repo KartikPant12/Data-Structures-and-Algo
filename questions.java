@@ -287,3 +287,25 @@ public void rightview(TreeNode root,ArrayList<Integer> ans)
         
     }
 
+
+kth smallest element in bst
+
+ public void addAllLeft(TreeNode root,Stack<TreeNode> st){
+        TreeNode curr = root;
+        while(curr!=null){
+           st.push(curr);
+            curr =  curr.left;
+        }
+    }
+    
+    
+    public int kthSmallest(TreeNode root, int k) {
+        Stack<TreeNode> st = new Stack<>();
+        addAllLeft(root,st);
+        while(--k>0){
+            TreeNode nn = st.pop();
+            addAllLeft(nn.right,st);
+        }
+        
+        return st.pop().val;
+    }
