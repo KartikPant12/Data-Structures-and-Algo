@@ -192,4 +192,25 @@ public void rightview(TreeNode root,ArrayList<Integer> ans)
         return ans;
     }
 
+find the sum from root
+
+public int NumSum(TreeNode root ,int val){
+        if(root == null) return 0;
+        
+        val = val*10 + root.val;
+        
+        if(root.left == null && root.right == null) return val;
+        
+        
+        return NumSum(root.left,val)+NumSum(root.right,val);
+    }
+    
+    public int sumNumbers(TreeNode root) {
+        return NumSum(root,0);
+        // return a;
+    }
+
+
+
+
 
