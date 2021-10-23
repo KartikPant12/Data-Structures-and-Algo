@@ -103,3 +103,52 @@ public:
         return helper(root, targetSum);
     }
 };
+
+
+
+// sum rot to leaf
+class Solution {
+public:
+    int sol=0;
+    int sumNumbers(TreeNode* root) {
+        build(root,0);
+        return sol;
+    }
+    void build(TreeNode* root,int n)
+    {
+        if(root)
+        {
+             n=n*10+root->val;
+            if(root->left==NULL && root->right==NULL)
+            {
+                sol+=n;
+                return ;
+            }
+            build(root->left,n);
+            build(root->right,n);
+        }
+    }
+};
+
+class Solution {
+public:
+    int sol=0;
+    int sumNumbers(TreeNode* root) {
+        build(root,0);
+        return sol;
+    }
+    void build(TreeNode* root,int n)
+    {
+        if(root)
+        {
+             n=n*10+root->val;
+            if(root->left==NULL && root->right==NULL)
+            {
+                sol+=n;
+                return ;
+            }
+            build(root->left,n);
+            build(root->right,n);
+        }
+    }
+};
