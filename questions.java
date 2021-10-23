@@ -115,3 +115,36 @@ public void solve(TreeNode root,  List<List<Integer>>  ans)
         
     }
 
+
+
+right view of a bst
+public void rightview(TreeNode root,ArrayList<Integer> ans)
+    {
+        LinkedList<TreeNode> qu = new LinkedList<>();
+        qu.add(root);
+        
+        
+        while(qu.size()!=0)
+        {
+            int size = qu.size();
+            ans.add(qu.getFirst().val);
+            while(size -- >0)
+            {
+                
+                TreeNode vtx = qu.removeFirst();
+                
+                if(vtx.right!=null) qu.addLast(vtx.right);
+                if(vtx.left != null) qu.addLast(vtx.left);
+                
+            }
+        }
+    }
+    public List<Integer> rightSideView(TreeNode root) {
+        if(root == null)return new ArrayList<>();
+        
+      ArrayList<Integer> ans = new ArrayList<>();
+        
+        rightview(root,ans);
+        return ans;
+        
+    }
