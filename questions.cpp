@@ -203,3 +203,44 @@ public:
     }
     */
 };
+
+
+// C++ | Iterative | Level Order Traversal | BFS | TC : O(N) SC : O(N)
+int deepestLeavesSum(TreeNode* root) {
+		priority_queue<pair<int,int>> maxHeap;
+        queue<TreeNode*> Q;
+		
+        Q.push(root);
+        Q.push(new TreeNode(-1));
+        int depth = 0;
+		
+        while(!Q.empty()){
+            if(Q.front()->val == -1) {
+                Q.push(new TreeNode(-1));
+                Q.pop();
+                depth++;
+            }
+            
+            TreeNode *tempNode = Q.front();
+            Q.pop();
+            
+            if(!tempNode->left && !tempNode->right && !(tempNode->val == -1))
+                maxHeap.push(make_pair(depth,tempNode->val));
+            
+            if(tempNode->left)
+                Q.push(tempNode->left);
+            
+            if(tempNode->right)
+                Q.push(tempNode->right);
+        }
+        
+        int sum = 0, maxDepth = maxHeap.top().first;
+        while(!maxHeap.empty()){
+            if(maxHeap.top().first != maxDepth)
+                break;
+            sum += maxHeap.top().second;
+            maxHeap.pop();
+        }
+        
+        return sum;
+    }
