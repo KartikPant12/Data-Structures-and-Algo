@@ -178,3 +178,28 @@ public:
         solve(max_depth,root,1);
         return ans;
     }
+     
+//BFS
+    /* 
+	int deepestLeavesSum(TreeNode* root) {
+         if(root==NULL) return 0;
+          vector<int> temp;
+          queue<TreeNode*> q;
+          q.push(root);
+         while(!q.empty()){
+             temp.clear();           
+             int sz=q.size();
+             
+             for(int i=0; i<sz; i++){
+                 auto x=q.front();
+                 q.pop();
+                 temp.push_back(x->val);
+                 if(x->left) q.push(x->left);
+                 if(x->right) q.push(x->right);
+             }
+             
+         }
+             return accumulate(temp.begin(),temp.end(),0);
+    }
+    */
+};
