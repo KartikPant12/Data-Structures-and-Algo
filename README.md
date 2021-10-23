@@ -71,4 +71,34 @@ public:
     }
 };
 
+<!-- Please upvote to motivate me in my quest of documenting all leetcode solutions. HAPPY CODING:) -->
+class Solution {
+public:
+int deepestLeavesSum(TreeNode* root) {
+queue<TreeNode* > q;
+if(root==nullptr)
+return 1;
+q.push(root);
+int sum=0;
+int curr_sum;
+while(!q.empty())
+{
+size_t size=q.size();
+curr_sum=0;
+for(int i=0;i<size;i++)
+{
+TreeNode* curr=q.front();
+q.pop();
+curr_sum+=curr->val;
+if(curr->left)
+q.push(curr->left);
+if(curr->right)
+q.push(curr->right);
+}
+sum=curr_sum;
+}
+return sum;
+}
+};
+
 
